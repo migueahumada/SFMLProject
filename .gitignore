@@ -1,0 +1,4 @@
+# Git ignore
+
+build
+*.DS_Store
