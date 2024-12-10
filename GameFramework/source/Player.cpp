@@ -13,10 +13,14 @@ void Player::render(sf::RenderWindow& window){
     window.draw(m_Shape);
 }
 
+/*
+    v= d/t
+    d = v*t
+*/
 void Player::move(MovementDirection movementDirection){
     switch (movementDirection){
         case UP:
-            m_Position.y -= 10;
+            m_Position.y = m_Position.y-10;
             m_Shape.setPosition(m_Position);
             break;
         case DOWN:

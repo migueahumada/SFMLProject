@@ -3,6 +3,7 @@
 #include <vector>
 #include "Entity.h"
 #include "Player.h"
+#include "Component.h"
 
 
 //Variables
@@ -82,6 +83,10 @@ int main(){
 
     entities.push_back(std::make_unique<Player>());
 
+    Vector2f vec1 = {10.0f,10.0f};
+    Vector2f vec2 = {20.0f,20.0f};
+
+    std::cout << vec1 - vec2 << std::endl;
 
     while (window.isOpen())
     {
