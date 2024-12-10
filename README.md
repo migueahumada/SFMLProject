@@ -1,8 +1,15 @@
 # SFML Project
 
-Project implementing game programming patterns.
+##Project implementing game programming patterns.
 
-To run the project, build it using cmake while in **SFMLProject** folder.
+Create a build folder inside **SFML_Project** and run cmake to create the files for your system.
+```
+mkdir build
+cd build
+cmake ..
+```
+
+Go to **SFML_Project** and run
 ```
 cmake -B build
 cmake --build build

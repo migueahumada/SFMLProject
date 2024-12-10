@@ -1,4 +1,6 @@
 # Git ignore
 
 build
+
+#Mac OS files
 *.DS_Store
