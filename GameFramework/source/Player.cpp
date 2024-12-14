@@ -17,23 +17,26 @@ void Player::render(sf::RenderWindow& window){
     v= d/t
     d = v*t
 */
-void Player::move(MovementDirection movementDirection){
+void Player::move(MovementDirection movementDirection, sf::Time deltaTime){
     switch (movementDirection){
         case UP:
-            m_Position.y = m_Position.y-10;
+            //Velocidad = Distancia/Tiempo
+            //Distancia = Velocidad * Tiempo
+            //m_Position.y = (m_Position.y - m_Speed) * deltaTime;
+            m_Position.y -= m_Velocity.y * deltaTime.asSeconds();
             m_Shape.setPosition(m_Position);
             break;
         case DOWN:
             //TODO: multiplicar por delta time
-            m_Position.y += 10;
+            m_Position.y += m_Velocity.y * deltaTime.asSeconds();
             m_Shape.setPosition(m_Position);
             break;
         case LEFT:
-            m_Position.x -= 10;
+            m_Position.x -= m_Velocity.x * deltaTime.asSeconds();
             m_Shape.setPosition(m_Position);
             break;
         case RIGHT:
-            m_Position.x += 10;
+            m_Position.x += m_Velocity.x * deltaTime.asSeconds();
             m_Shape.setPosition(m_Position);
             break;
         default:

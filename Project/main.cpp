@@ -6,7 +6,6 @@
 #include "Player.h"
 #include "Component.h"
 
-
 //Variables
 bool isFinished = false;
 const int FRAMERATE_LIMIT = 60;
@@ -22,7 +21,7 @@ constexpr uint32_t MAX_HEIGHT = 1080/2;
 */
 
 //Processes the input, if no input is detected, flow isn't blocked
-void processInput(sf::RenderWindow& window, Player* player){
+void processInput(sf::RenderWindow& window, Player* player, sf::Time deltaTime){
     sf::Event event;
     
     while (window.pollEvent(event))
@@ -33,19 +32,19 @@ void processInput(sf::RenderWindow& window, Player* player){
         }
         //Up
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-            player->move(MovementDirection::UP);
+            player->move(MovementDirection::UP, deltaTime);
         }
         //Down
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-            player->move(MovementDirection::DOWN);
+            player->move(MovementDirection::DOWN, deltaTime);
         }
         //Left
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            player->move(MovementDirection::LEFT);
+            player->move(MovementDirection::LEFT, deltaTime);
         }
         //Right
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            player->move(MovementDirection::RIGHT);
+            player->move(MovementDirection::RIGHT, deltaTime);
         }
         
     }
@@ -67,8 +66,6 @@ void render(sf::RenderWindow& window, std::vector<std::unique_ptr<Entity>>& enti
         {
             entity->render(window);
         }
-        
-        
         window.display();
 }
 
@@ -76,8 +73,6 @@ int main(){
     
     //Initial Stuff
     sf::RenderWindow window = sf::RenderWindow({MAX_HEIGHT, MAX_WIDTH}, "PacMan");
-
-    
     
     //Stuff that needs to be added before.
     std::vector<std::unique_ptr<Entity>> entities;
@@ -106,21 +101,21 @@ int main(){
         sf::Time deltaTime = current - lastTime;
         std::cout << "Delta time: "<< deltaTime.asMicroseconds()<< std::endl;
 
-        processInput(window,dynamic_cast<Player*>(entities[0].get()));
+        processInput(window,dynamic_cast<Player*>(entities[0].get()), deltaTime);
         update(entities);
         render(window, entities);
 
         lastTime = current;
         std::cout << "Last time: " << lastTime.asMicroseconds()<< std::endl;
         
-        sf::sleep(timePerFrame - deltaTime);
-        
+        //sf::sleep(deltaTime - timePerFrame);
         std::cout << "-------------"<< std::endl; 
+        std::cout << "The delta time is: " << deltaTime.asMilliseconds() << std::endl;
+        sf::Time elapsed = clock.getElapsedTime() - current;
+        if (elapsed < timePerFrame) {
+            sf::sleep(timePerFrame - elapsed);
+        } 
     }
-
-    
-
-    // delete player;
 
     return 0;
 }

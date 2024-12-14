@@ -17,7 +17,7 @@ public:
     Player();
     void update() override;
     void render(sf::RenderWindow& window) override;
-    void move(MovementDirection movementDirection);
+    void move(MovementDirection movementDirection, sf::Time deltaTime);
     
     //Components
     Transform m_Transform;
@@ -27,5 +27,5 @@ public:
     sf::Color m_Color = sf::Color::Cyan;
     sf::Vector2f m_Position = {200.0f, 300.0f};
     //TODO: Add velocity to the player
-    sf::Vector2f m_Velocity = {10.0f,10.0f};
+    sf::Vector2f m_Velocity = {420.0f,420.0f};
 };
