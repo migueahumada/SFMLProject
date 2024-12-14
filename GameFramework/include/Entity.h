@@ -2,10 +2,6 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 
-struct Transform{
-    sf::Vector2f fPosition;
-};
-
 /*
     Entity -> Actor or Game Object
     - Transform

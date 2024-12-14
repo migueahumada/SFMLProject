@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <SFML/System/Clock.hpp>
 #include "Entity.h"
 #include "Player.h"
 #include "Component.h"
@@ -75,7 +76,8 @@ int main(){
     
     //Initial Stuff
     sf::RenderWindow window = sf::RenderWindow({MAX_HEIGHT, MAX_WIDTH}, "PacMan");
-    window.setFramerateLimit(FRAMERATE_LIMIT); //FRAMES
+
+    
     
     //Stuff that needs to be added before.
     std::vector<std::unique_ptr<Entity>> entities;
@@ -83,19 +85,40 @@ int main(){
 
     entities.push_back(std::make_unique<Player>());
 
-    Vector2f vec1 = {10.0f,10.0f};
-    Vector2f vec2 = {20.0f,20.0f};
+    const sf::Time timePerFrame = sf::microseconds(16666);
+    
+    //Iniciar el contador
+    sf::Clock clock;
 
-    std::cout << vec1 - vec2 << std::endl;
+    //Timpo al iniciar
+    sf::Time lastTime = clock.getElapsedTime(); //0 ms
+    std::cout << "First last time is " << lastTime.asMicroseconds() << std::endl;
 
+    //GAME LOOP
     while (window.isOpen())
-    {
+    {      
+        //Tiempo antes del proceso que se llamara el actual
+
+        sf::Time current = clock.getElapsedTime(); 
+        std::cout << "Current time: "<< current.asMicroseconds()<< std::endl;
+        
+        //Tiempo actual - Tiempo del frame pasado
+        sf::Time deltaTime = current - lastTime;
+        std::cout << "Delta time: "<< deltaTime.asMicroseconds()<< std::endl;
 
         processInput(window,dynamic_cast<Player*>(entities[0].get()));
         update(entities);
         render(window, entities);
 
+        lastTime = current;
+        std::cout << "Last time: " << lastTime.asMicroseconds()<< std::endl;
+        
+        sf::sleep(timePerFrame - deltaTime);
+        
+        std::cout << "-------------"<< std::endl; 
     }
+
+    
 
     // delete player;
 

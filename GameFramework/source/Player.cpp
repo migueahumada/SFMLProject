@@ -24,6 +24,7 @@ void Player::move(MovementDirection movementDirection){
             m_Shape.setPosition(m_Position);
             break;
         case DOWN:
+            //TODO: multiplicar por delta time
             m_Position.y += 10;
             m_Shape.setPosition(m_Position);
             break;

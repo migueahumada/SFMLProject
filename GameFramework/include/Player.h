@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Component.h"
+#include "Transform.h"
 
 class Vector2f;
 
@@ -17,7 +18,10 @@ public:
     void update() override;
     void render(sf::RenderWindow& window) override;
     void move(MovementDirection movementDirection);
-
+    
+    //Components
+    Transform m_Transform;
+    
     sf::CircleShape m_Shape;
     float m_Radius = 40.0f; 
     sf::Color m_Color = sf::Color::Cyan;

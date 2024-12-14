@@ -5,7 +5,7 @@
 class Scene{
 public:
     Scene();
-
-    std::vector<std::unique_ptr<Entity>> m_Entities;
+    
+    
     
 };
