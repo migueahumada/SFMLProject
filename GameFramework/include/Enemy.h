@@ -4,7 +4,7 @@
 class Enemy : public Entity{
 public:
     Enemy();
-    void update() override;
+    void update(sf::Time deltaTime) override;
     void render(sf::RenderWindow& window) override;
 private:
     

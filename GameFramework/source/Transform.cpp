@@ -8,6 +8,13 @@ Transform::Transform(Vector2f&& position, Vector2f&& rotation, Vector2f&& scale)
     
 }
 
+void Transform::update(sf::Time deltaTime){
+
+}
+void Transform::render(sf::RenderWindow& window){
+    
+}
+
 void Transform::setPosition(Vector2f&& newPosition){
     m_Position = newPosition;
 }

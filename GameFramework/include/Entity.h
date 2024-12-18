@@ -1,26 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include <string>
 
-/*
-    Entity -> Actor or Game Object
-    - Transform
-
-        - PacMan -> Player
-        - Ghost -> NPC with AI
-        - Walls -> Geometry
-        - Berries -> Items
-
-*/
+#include <vector>
+#include "Component.h"
 
 
 class Entity{
 public:
     Entity();
-    virtual void update() = 0;
-    virtual void render(sf::RenderWindow& window) = 0;
     virtual ~Entity();
-private: 
+    virtual void update(sf::Time deltaTime);
+    virtual void render(sf::RenderWindow& window);
+    
+protected:
+    std::vector<std::unique_ptr<Component>> m_components;
     
 };
 

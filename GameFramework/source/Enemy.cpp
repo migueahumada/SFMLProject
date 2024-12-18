@@ -4,7 +4,7 @@ Enemy::Enemy(){
 
 }
 
-void Enemy::update(){
+void Enemy::update(sf::Time deltaTime){
 
 }
 

@@ -15,13 +15,14 @@ enum MovementDirection{
 class Player : public Entity{    
 public:
     Player();
-    void update() override;
+    void update(sf::Time deltaTime) override;
     void render(sf::RenderWindow& window) override;
     void move(MovementDirection movementDirection, sf::Time deltaTime);
     
     //Components
     Transform m_Transform;
     
+    //TODO: Mover esto al constructor initializer list
     sf::CircleShape m_Shape;
     float m_Radius = 40.0f; 
     sf::Color m_Color = sf::Color::Cyan;

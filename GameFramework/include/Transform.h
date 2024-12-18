@@ -7,7 +7,10 @@ public:
     Transform();
     Transform(Vector2f&& position, Vector2f&& rotation, Vector2f&& scale);
 
-    //void update() override;
+    
+    void update(sf::Time deltaTime) override;
+    void render(sf::RenderWindow& window) override;
+    
 
     void setPosition(Vector2f&& newPosition);
     void setRotation(Vector2f&& newRotation);

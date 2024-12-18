@@ -6,7 +6,7 @@ Player::Player(){
     m_Shape.setPosition(m_Position);
 }
 
-void Player::update(){
+void Player::update(sf::Time deltaTime){
     
 }
 void Player::render(sf::RenderWindow& window){
