@@ -1,5 +1,6 @@
 #include "Scene.h"
 #include "Player.h"
+#include "Text.h"
 
 
 Scene::Scene(){
@@ -15,6 +16,7 @@ Scene::~Scene(){
 
 MainMenu::MainMenu(){
     m_Entities.push_back(std::make_unique<Player>());
+    m_Entities.push_back(std::make_unique<Text>());
 }
 
 MainMenu::~MainMenu(){

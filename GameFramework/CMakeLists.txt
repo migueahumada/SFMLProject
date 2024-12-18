@@ -17,7 +17,8 @@ add_library(GameFramework STATIC    source/Entity.cpp
                                     source/Component.cpp 
                                     source/Transform.cpp 
                                     source/Vector2f.cpp 
-                                    source/Game.cpp)
+                                    source/Game.cpp
+                                    source/Text.cpp)
 
 #dar include headers
 target_include_directories(GameFramework PUBLIC include)
