@@ -2,14 +2,19 @@
 #include <iostream>
 
 
-Text::Text(){
+Text::Text() {
     if(m_Font.loadFromFile(m_FontPath)){
         std::cout << "FONT LOADED!"<<std::endl;;
         m_Text.setFont(m_Font);
-        m_Text.setCharacterSize(24);
-        m_Text.setFillColor(sf::Color::Magenta);
-        m_Text.setStyle(sf::Text::Bold);
-        m_Text.setString("Este es el string");
+        m_Text.setCharacterSize(m_FontSize);
+        m_Text.setFillColor(m_FontColor);
+        m_Text.setStyle(m_FontStyle);
+        m_Text.setString(m_String);
+        //update position in this
+        //update position in the textclass
+        //m_TransformComponent.getPosition() = Vector2f{120.0f,230.0f} + m_TransformComponent.getPosition();
+        //m_Text.setPosition(m_TransformComponent.getPosition()+Vector2f{0.0f,120.0f});
+        
     }  
 }
 
