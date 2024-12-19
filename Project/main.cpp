@@ -1,27 +1,15 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <SFML/System/Clock.hpp>
+#include "Entity.h"
+#include "Player.h"
+#include "Game.h"
 
-int main()
-{
-    bool isFinished = false;
-    const int FRAMERATE_LIMIT = 60;
-    const uint32_t MAX_HEIGHT = 1920;
-    const uint32_t MAX_WIDTH = 1080;
+int main(){
+    Game game;
 
-    auto window = sf::RenderWindow({MAX_HEIGHT, MAX_WIDTH}, "PacMan");
-    window.setFramerateLimit(FRAMERATE_LIMIT);
+    game.run();    
 
-    while (window.isOpen())
-    {
-        for (auto event = sf::Event(); window.pollEvent(event);)
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-        }
-
-        window.clear();
-        window.display();
-    }
+    return 0;
 }
