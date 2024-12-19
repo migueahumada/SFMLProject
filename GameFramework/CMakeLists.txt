@@ -18,10 +18,12 @@ add_library(GameFramework STATIC    source/Entity.cpp
                                     source/Transform.cpp 
                                     source/Vector2f.cpp 
                                     source/Game.cpp
-                                    source/Text.cpp)
+                                    source/Text.cpp
+                                    ../Project/source/Play.cpp
+                                    ../Project/source/MainMenu.cpp)
 
 #dar include headers
-target_include_directories(GameFramework PUBLIC include)
+target_include_directories(GameFramework PUBLIC include ../Project/include)
 
 #librerías de las que esta librería es dependiente
 target_link_libraries(GameFramework PRIVATE sfml-graphics)

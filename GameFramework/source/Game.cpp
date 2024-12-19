@@ -4,6 +4,7 @@ Game::Game(){
     m_Window.create({1080u,1920u},"PacMan");
     m_LastTime = m_Clock.getElapsedTime();
     m_MainMenu = std::make_unique<MainMenu>();
+    m_PlayScene = std::make_unique<Play>();
     
 }
 
@@ -84,13 +85,11 @@ void Game::processInput(sf::RenderWindow& window, sf::Time deltaTime){
 
 //Cambiar
 void Game::update(sf::Time deltaTime){
-    m_MainMenu->update(deltaTime);
+    m_PlayScene->update(deltaTime);
 }
 
 void Game::render(){
     m_Window.clear();
-
-    m_MainMenu->render(m_Window);
-
+    m_PlayScene->render(m_Window);
     m_Window.display();
 }

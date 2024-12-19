@@ -4,6 +4,8 @@
 #include "Scene.h"
 #include "Player.h"
 #include "Text.h"
+#include "Play.h"
+#include "MainMenu.h"
 
 class Game{
 public:
@@ -28,5 +30,6 @@ public:
     std::unique_ptr<Player> m_Player;
     //std::vector<std::unique_ptr<Entity>> m_Entities;
     std::unique_ptr<MainMenu> m_MainMenu;
+    std::unique_ptr<Play> m_PlayScene;
     
 };
