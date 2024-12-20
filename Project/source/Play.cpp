@@ -1,11 +1,9 @@
 #include "Play.h"
-#include "Player.h"
-#include "Map.h"
 
-Play::Play(sf::RenderWindow& window){
+Play::Play(){
+    m_Entities.push_back(m_Map);
+    m_Entities.push_back(m_Player);
     
-    m_Entities.push_back(std::make_unique<Map>());
-    m_Entities.push_back(std::make_unique<Player>());
 }
 
 void Play::update(sf::Time deltaTime){
@@ -17,4 +15,8 @@ void Play::render(sf::RenderWindow& window){
     {
         entity->render(window);
     }
+}
+
+std::shared_ptr<Player> Play::getPlayer() const{
+    return m_Player;
 }

@@ -2,10 +2,14 @@
 #include "Common.h"
 
 Game::Game(){
+
     m_Window.create({SCREEN_WIDTH,SCREEN_HEIGHT},"PacMan");
+    
+    m_Player = std::make_shared<Player>();
+
     m_LastTime = m_Clock.getElapsedTime();
-    m_MainMenu = std::make_unique<MainMenu>();
-    m_PlayScene = std::make_unique<Play>(m_Window);
+    
+    
     
 }
 
@@ -60,37 +64,24 @@ void Game::processInput(sf::RenderWindow& window, sf::Time deltaTime){
         }
         
         
-        //Up
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-            
-            if(m_Player){
-                m_Player->move(MovementDirection::UP, deltaTime);
-            }
+        //Left
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
+            m_SceneManager.changeScene(SceneStates::PLAY_SCENE);
         }
-        
-        // //Down
-        // if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        //     m_Player->move(MovementDirection::DOWN, deltaTime);
-        // }
-        // //Left
-        // if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-        //     m_Player->move(MovementDirection::LEFT, deltaTime);
-        // }
-        // //Right
-        // if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        //     m_Player->move(MovementDirection::RIGHT, deltaTime);
-        // }
+        //Right
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
+            m_SceneManager.changeScene(SceneStates::MAIN_MENU);
+        }
         
     }
 }
 
-//Cambiar
 void Game::update(sf::Time deltaTime){
-    m_PlayScene->update(deltaTime);
+    m_SceneManager.update(deltaTime);
 }
 
 void Game::render(){
     m_Window.clear();
-    m_PlayScene->render(m_Window);
+    m_SceneManager.render(m_Window);
     m_Window.display();
 }

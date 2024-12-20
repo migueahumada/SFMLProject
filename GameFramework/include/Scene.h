@@ -20,7 +20,7 @@ public:
     virtual void render(sf::RenderWindow& window){}
 //This should be protected
 protected:
-    std::vector<std::unique_ptr<Entity>> m_Entities;
+    std::vector<std::shared_ptr<Entity>> m_Entities;
 };
 
 

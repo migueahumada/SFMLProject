@@ -21,7 +21,9 @@ add_library(GameFramework STATIC    source/Entity.cpp
                                     ../Project/source/Player.cpp
                                     ../Project/source/Play.cpp
                                     ../Project/source/MainMenu.cpp
-                                    ../Project/source/Map.cpp)
+                                    ../Project/source/Map.cpp
+                                    ../Project/source/SceneManager.cpp
+                                    )
 
 #dar include headers
 target_include_directories(GameFramework PUBLIC include ../Project/include)

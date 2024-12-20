@@ -1,11 +1,20 @@
 #pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <map>
+#include "Common.h"
 #include "Scene.h"
 #include "Player.h"
 #include "Text.h"
 #include "Play.h"
 #include "MainMenu.h"
+#include "SceneManager.h"
+
+enum GameState{
+    MAIN_MENU,
+    PLAY_SCENE,
+    GAME_OVER
+};
 
 class Game{
 public:
@@ -25,9 +34,12 @@ public:
     sf::Time m_LastTime;
     sf::Event m_Event;
     sf::RenderWindow m_Window;
-    std::unique_ptr<Player> m_Player;
-    //std::vector<std::unique_ptr<Entity>> m_Entities;
-    std::unique_ptr<MainMenu> m_MainMenu;
-    std::unique_ptr<Play> m_PlayScene;
+
+    SceneManager m_SceneManager;
+
+    std::shared_ptr<Player> m_Player;
+    
+    std::map<GameState, std::shared_ptr<Scene>> m_Scenes;
+
     
 };

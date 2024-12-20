@@ -11,6 +11,6 @@ public:
     void render(sf::RenderWindow& window) override;
 
     //Entities in Main Menu
-    std::unique_ptr<Text> mainTitle;
+    std::shared_ptr<Text> mainTitle;
 
 };
