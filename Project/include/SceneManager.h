@@ -10,10 +10,12 @@ class SceneManager{
 public:
     SceneManager();
     
+    void processInput(sf::Time deltaTime, sf::RenderWindow& window);
     void update(sf::Time deltaTime);
     void render(sf::RenderWindow& window);
 
     SceneStates getCurrentScene() const;
+    std::shared_ptr<Scene> getScenePointer() const;
     void changeScene(SceneStates nextState);
     std::shared_ptr<Scene> getScene(SceneStates state) const;
     

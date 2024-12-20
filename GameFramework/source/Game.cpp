@@ -4,8 +4,6 @@
 Game::Game(){
 
     m_Window.create({SCREEN_WIDTH,SCREEN_HEIGHT},"PacMan");
-    
-    m_Player = std::make_shared<Player>();
 
     m_LastTime = m_Clock.getElapsedTime();
     
@@ -33,9 +31,7 @@ void Game::run(){
         //std::cout << "Delta time: "<< deltaTime.asMicroseconds()<< std::endl;
 
         
-
-
-        processInput(m_Window, deltaTime);
+        m_SceneManager.processInput(deltaTime,m_Window);
         update(deltaTime);
         render();
 
@@ -52,28 +48,6 @@ void Game::run(){
         } 
     }
 
-}
-
-void Game::processInput(sf::RenderWindow& window, sf::Time deltaTime){
-    sf::Event event;
-    while (window.pollEvent(event))
-    {
-        //Exit
-        if(event.type == sf::Event::Closed){
-            window.close();
-        }
-        
-        
-        //Left
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-            m_SceneManager.changeScene(SceneStates::PLAY_SCENE);
-        }
-        //Right
-        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-            m_SceneManager.changeScene(SceneStates::MAIN_MENU);
-        }
-        
-    }
 }
 
 void Game::update(sf::Time deltaTime){

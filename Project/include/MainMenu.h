@@ -7,6 +7,7 @@ class MainMenu : public Scene{
 public:
     MainMenu();
     ~MainMenu(); 
+    void processInput(sf::Time deltaTime, sf::RenderWindow& window) override;
     void update(sf::Time deltaTime) override;
     void render(sf::RenderWindow& window) override;
 

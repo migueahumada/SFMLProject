@@ -4,7 +4,11 @@ SceneManager::SceneManager(){
     m_Scenes.insert({SceneStates::MAIN_MENU,m_MainMenuScene});
     m_Scenes.insert({SceneStates::PLAY_SCENE,m_PlayScene});
 
-    m_CurrentScene = SceneStates::MAIN_MENU;
+    m_CurrentScene = SceneStates::PLAY_SCENE;
+}
+
+void SceneManager::processInput(sf::Time deltaTime, sf::RenderWindow& window){
+    m_Scenes.at(m_CurrentScene)->processInput(deltaTime,window);
 }
 
 void SceneManager::update(sf::Time deltaTime){

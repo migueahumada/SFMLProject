@@ -2,6 +2,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include <map>
+#include <memory>
 #include "Common.h"
 #include "Scene.h"
 #include "Player.h"
@@ -20,8 +21,7 @@ class Game{
 public:
     Game();
     void run();
-    
-    void processInput(sf::RenderWindow& window, sf::Time deltaTime);
+
     void update(sf::Time deltaTime);
     void render();
 
@@ -36,10 +36,6 @@ public:
     sf::RenderWindow m_Window;
 
     SceneManager m_SceneManager;
-
-    std::shared_ptr<Player> m_Player;
-    
-    std::map<GameState, std::shared_ptr<Scene>> m_Scenes;
 
     
 };

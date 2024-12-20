@@ -11,6 +11,18 @@ MainMenu::~MainMenu(){
     
 }
 
+void MainMenu::processInput(sf::Time deltaTime, sf::RenderWindow& window){
+    sf::Event event;
+    while (window.pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            window.close();
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+            std::cout << "Enter key pressed in MainMenu!" << std::endl;
+        }
+    }
+}
+
 void MainMenu::update(sf::Time deltaTime){
     for (auto &entity : m_Entities)
     {
