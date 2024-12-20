@@ -1,10 +1,11 @@
 #include "Game.h"
+#include "Common.h"
 
 Game::Game(){
-    m_Window.create({1080u,1920u},"PacMan");
+    m_Window.create({SCREEN_WIDTH,SCREEN_HEIGHT},"PacMan");
     m_LastTime = m_Clock.getElapsedTime();
     m_MainMenu = std::make_unique<MainMenu>();
-    m_PlayScene = std::make_unique<Play>();
+    m_PlayScene = std::make_unique<Play>(m_Window);
     
 }
 

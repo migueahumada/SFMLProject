@@ -10,4 +10,7 @@ public:
     void update(sf::Time deltaTime) override;
     void render(sf::RenderWindow& window) override;
 
+    //Entities in Main Menu
+    std::unique_ptr<Text> mainTitle;
+
 };

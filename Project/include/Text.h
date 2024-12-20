@@ -1,6 +1,7 @@
 #pragma once
 #include "Entity.h"
 #include "Transform.h"
+#include <string>
 
 namespace sf{
     class Text;
@@ -9,7 +10,14 @@ namespace sf{
 
 class Text : public Entity{
 public:
-    Text();
+    Text(const std::string& stringText = "Default",
+         const sf::Color& fontColor = sf::Color::Magenta,
+         unsigned int fontSize = 24,
+         const sf::Text::Style& fontStyle = sf::Text::Bold, 
+         const Vector2f position = Vector2f{0.0f,0.0f},
+         const Vector2f rotation = Vector2f{0.0f,0.0f},
+         const Vector2f scale = Vector2f{0.0f,0.0f}
+         );
     void update(sf::Time deltaTime) override;
     void render(sf::RenderWindow& window) override;
 
@@ -20,7 +28,8 @@ private:
     unsigned int m_FontSize = 24;
     sf::Color m_FontColor = sf::Color::Magenta;
     sf::Text::Style m_FontStyle = sf::Text::Bold;
-    sf::String m_String = "Default";
+    std::string m_String = "Default";
     Transform m_TransformComponent;
+    
 
 };

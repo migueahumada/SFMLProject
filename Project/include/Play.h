@@ -3,7 +3,7 @@
 
 class Play : public Scene{
 public:
-    Play() = default;
+    Play(sf::RenderWindow& window);
 
     void update(sf::Time deltaTime) override;
     void render(sf::RenderWindow& window) override;

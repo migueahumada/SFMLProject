@@ -23,11 +23,11 @@ void Vector2f::setY(float y){
     m_Y = y;
 }
 
-Vector2f Vector2f::operator+(Vector2f& other){
+Vector2f Vector2f::operator+(const Vector2f& other){
     return Vector2f(this->m_X+other.getX(),this->m_Y+other.getY());
 }
 
-Vector2f Vector2f::operator-(Vector2f& other){
+Vector2f Vector2f::operator-(const Vector2f& other){
     return Vector2f(this->m_X-other.getX(),this->m_Y-other.getY());
 }
 

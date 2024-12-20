@@ -19,8 +19,6 @@ public:
 
     //Variables
     const int FRAMERATE_LIMIT = 60;
-    int MAX_WIDTH = 1920;
-    int MAX_HEIGHT = 1080;
     bool m_IsFinished = false; //0 ms
     const sf::Time m_TimePerFrame = sf::microseconds(16666);
     sf::Clock m_Clock;

@@ -10,17 +10,18 @@ FetchContent_MakeAvailable(SFML)
 #Creamos librería
 #cambiar SHARED si fuera dinamica
 #dar cpps 
-add_library(GameFramework STATIC    source/Entity.cpp 
-                                    source/Player.cpp     
-                                    source/Enemy.cpp 
+add_library(GameFramework STATIC    source/Entity.cpp
                                     source/Scene.cpp 
                                     source/Component.cpp 
                                     source/Transform.cpp 
                                     source/Vector2f.cpp 
                                     source/Game.cpp
-                                    source/Text.cpp
+                                    ../Project/source/Enemy.cpp
+                                    ../Project/source/Text.cpp
+                                    ../Project/source/Player.cpp
                                     ../Project/source/Play.cpp
-                                    ../Project/source/MainMenu.cpp)
+                                    ../Project/source/MainMenu.cpp
+                                    ../Project/source/Map.cpp)
 
 #dar include headers
 target_include_directories(GameFramework PUBLIC include ../Project/include)
