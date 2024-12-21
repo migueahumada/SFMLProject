@@ -35,7 +35,10 @@ void Play::processInput(sf::Time deltaTime, sf::RenderWindow& window){
 }
 
 void Play::update(sf::Time deltaTime){
-
+    for (auto &entity : m_Entities)
+    {
+        entity->update(deltaTime);
+    }
 }
 
 void Play::render(sf::RenderWindow& window){

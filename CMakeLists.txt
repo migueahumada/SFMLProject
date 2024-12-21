@@ -7,4 +7,5 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 add_subdirectory(GameFramework)
 add_subdirectory(Project)
+add_subdirectory(Mods)
 
