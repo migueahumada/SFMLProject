@@ -18,9 +18,15 @@ public:
     virtual void processInput(sf::Time deltaTime, sf::RenderWindow& window){}
     virtual void update(sf::Time deltaTime){}
     virtual void render(sf::RenderWindow& window){}
+    
+    inline bool getNextScene() const{
+        return m_NextScene;
+    }
+    
 //This should be protected
 protected:
     std::vector<std::shared_ptr<Entity>> m_Entities;
+    bool m_NextScene = false;
 };
 
 

@@ -23,6 +23,7 @@ add_library(GameFramework STATIC    source/Entity.cpp
                                     ../Project/source/MainMenu.cpp
                                     ../Project/source/Map.cpp
                                     ../Project/source/SceneManager.cpp
+                                    ../Project/source/Button.cpp
                                     )
 
 #dar include headers

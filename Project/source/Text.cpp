@@ -13,9 +13,11 @@ Text::Text(const std::string& stringText,
             m_FontSize(fontSize), 
             m_FontStyle(fontStyle)
             {
+    
     m_TransformComponent.setPosition(position);
     m_TransformComponent.setRotation(rotation);
     m_TransformComponent.setScale(scale);
+    
     if(m_Font.loadFromFile(m_FontPath)){
         std::cout << "FONT LOADED!"<<std::endl;;
         m_Text.setPosition(position.getX(),position.getY());

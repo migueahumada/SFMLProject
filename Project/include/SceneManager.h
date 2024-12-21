@@ -6,6 +6,9 @@
 #include "MainMenu.h"
 #include "Play.h"
 
+class MainMenu;
+
+
 class SceneManager{
 public:
     SceneManager();
