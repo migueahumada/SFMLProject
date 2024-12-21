@@ -1,9 +1,16 @@
 #include "Entity.h"
 
-Entity::Entity(const std::string& name) : m_name(name){
+Entity::Entity(){
 
 }
-
-std::string Entity::getName() const{
-    return m_name;
+Entity::~Entity(){
+    
 }
+
+void Entity::update(sf::Time deltaTime){
+
+}
+void Entity::render(sf::RenderWindow& window){
+    
+}
+

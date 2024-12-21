@@ -1,27 +1,35 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include <vector>
+#include <SFML/System/Clock.hpp>
+#include "Entity.h"
+#include "Player.h"
+#include "Game.h"
+#include <dlfcn.h>
 
-int main()
-{
-    bool isFinished = false;
-    const int FRAMERATE_LIMIT = 60;
-    const uint32_t MAX_HEIGHT = 1920;
-    const uint32_t MAX_WIDTH = 1080;
+typedef void (*myMod)();
 
-    auto window = sf::RenderWindow({MAX_HEIGHT, MAX_WIDTH}, "PacMan");
-    window.setFramerateLimit(FRAMERATE_LIMIT);
-
-    while (window.isOpen())
-    {
-        for (auto event = sf::Event(); window.pollEvent(event);)
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-        }
-
-        window.clear();
-        window.display();
+int main(){
+    
+    void* handle = dlopen("/Users/miko/Documents/Coding/SFML_Project/build/Mods/libMods.dylib",RTLD_NOW);
+    if(handle == nullptr){
+        std::cout << "Error opening the library" << std::endl;
+        return 1;
     }
+    //myFunction modFunction = (myFunction)dlsym(handle, "printSomething");
+    myMod modFunction = reinterpret_cast<myMod>(dlsym(handle, "printSomething"));
+    if(modFunction == nullptr){
+        std::cout << "Error finding the library" << std::endl;
+        return 1;
+    }
+    
+    modFunction();
+
+    Game game;
+
+    game.run();  
+
+    dlclose(handle);  
+
+    return 0;
 }
