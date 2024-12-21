@@ -10,10 +10,24 @@ FetchContent_MakeAvailable(SFML)
 #Creamos librería
 #cambiar SHARED si fuera dinamica
 #dar cpps 
-add_library(GameFramework STATIC source/Entity.cpp)
+add_library(GameFramework STATIC    source/Entity.cpp
+                                    source/Scene.cpp 
+                                    source/Component.cpp 
+                                    source/Transform.cpp 
+                                    source/Vector2f.cpp 
+                                    source/Game.cpp
+                                    ../Project/source/Enemy.cpp
+                                    ../Project/source/Text.cpp
+                                    ../Project/source/Player.cpp
+                                    ../Project/source/Play.cpp
+                                    ../Project/source/MainMenu.cpp
+                                    ../Project/source/Map.cpp
+                                    ../Project/source/SceneManager.cpp
+                                    ../Project/source/Button.cpp
+                                    )
 
 #dar include headers
-target_include_directories(GameFramework PUBLIC include)
+target_include_directories(GameFramework PUBLIC include ../Project/include)
 
 #librerías de las que esta librería es dependiente
 target_link_libraries(GameFramework PRIVATE sfml-graphics)
